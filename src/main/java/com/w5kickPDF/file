@@ -1,0 +1,66 @@
+SHOW DATABASES;
+USE w5database2;
+SHOW TABLES ;
+CREATE TABLE Tournaments (
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY ,
+  name VARCHAR(30) NOT NULL ,
+  city VARCHAR(30) NOT NULL ,
+  date VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE Fighters (
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY ,
+  firstname VARCHAR(30) NOT NULL ,
+  lastname VARCHAR(30) NOT NULL ,
+  country VARCHAR(30) NOT NULL ,
+  weight VARCHAR(30) NOT NULL
+
+);
+
+CREATE TABLE Judges (
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY ,
+  firstname VARCHAR(30) NOT NULL ,
+  lastname VARCHAR(30) NOT NULL ,
+  country VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE Fights (
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY ,
+  eventname VARCHAR(30) NOT NULL ,
+  place VARCHAR(30) NOT NULL ,
+  date VARCHAR(30) NOT NULL ,
+  fightnumber VARCHAR(30) NOT NULL ,
+  cornerred VARCHAR(30) NOT NULL ,
+  countryred VARCHAR(30) NOT NULL ,
+  cornerblue VARCHAR(30) NOT NULL ,
+  country VARCHAR(30) NOT NULL ,
+  firstjudge VARCHAR(30) NOT NULL ,
+  secondjudge VARCHAR(30) NOT NULL ,
+  thridjudge VARCHAR(30) NOT NULL
+);
+
+ALTER TABLE Fights ADD referee VARCHAR(60) AFTER thridjudge;
+
+DROP TABLE Judge;
+
+
+SHOW TABLES;
+
+SELECT * FROM Tournaments;
+SELECT * FROM Fighters;
+SELECT * FROM Judges;
+SELECT * FROM Fights;
+DESCRIBE Fights;
+
+DELETE FROM Tournaments WHERE id = 10;
+
+ALTER TABLE Tournaments ADD place VARCHAR(30) AFTER city;
+
+UPDATE Tournaments SET id = 1 WHERE id = 7;
+
+INSERT INTO Fights (
+  eventname, place, date, fightnumber, cornerred, countryred, cornerblue,
+  country, firstjudge, secondjudge, thridjudge, referee)
+VALUES ('t1','t2','t3','t4','t5','t6','t7','t8','t9','t10','t11','t12');
+
+DELETE FROM Fights WHERE fightnumber = '12';
